@@ -33,6 +33,27 @@ class ACAPage(QWidget):
 
         self.calc_button.clicked.connect(self.calculate_ac_a_ratio)
 
+        self.setStyleSheet("""
+            QLabel {
+                font-size: 14px;
+            }
+            QLineEdit {
+                padding: 5px;
+                font-size: 14px;
+                border: 1px solid #4a4a4a;
+            }
+            QPushButton {
+                padding: 10px;
+                font-size: 14px;
+                background-color: #4a4a4a;
+                color: #ffffff;
+                border: none;
+            }
+            QPushButton:hover {
+                background-color: #5a5a5a;
+            }
+        """)
+
     def calculate_ac_a_ratio(self):
         ipd = float(self.ipd_input.text())
         near_dev = float(self.near_dev_input.text())

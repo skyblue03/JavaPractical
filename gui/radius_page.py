@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout
-from calculations.lens_calculations import radius_of_curvature_to_power
 
 class RadiusPage(QWidget):
     def __init__(self):
@@ -25,7 +24,28 @@ class RadiusPage(QWidget):
 
         self.calc_button.clicked.connect(self.calculate_power)
 
+        self.setStyleSheet("""
+            QLabel {
+                font-size: 14px;
+            }
+            QLineEdit {
+                padding: 5px;
+                font-size: 14px;
+                border: 1px solid #4a4a4a;
+            }
+            QPushButton {
+                padding: 10px;
+                font-size: 14px;
+                background-color: #4a4a4a;
+                color: #ffffff;
+                border: none;
+            }
+            QPushButton:hover {
+                background-color: #5a5a5a;
+            }
+        """)
+
     def calculate_power(self):
         radius = float(self.radius_input.text())
-        power = radius_of_curvature_to_power(radius)
+        power = 337.5 / radius
         self.result_display.setText(f'{power:.2f}')
